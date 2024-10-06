@@ -1,15 +1,35 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  mode: 'development',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  devServer: {
-    static: './dist',
-    port: 9000,
-    open: true,
-    }
+    mode: 'development',
+    entry: './src/index.js',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
+        publicPath: '/Restaurant-Page-with-webpack/',
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/template.html',
+        }),
+    ],
+    devServer: {
+        static: './dist',
+        port: 9000,
+        open: true,
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
+        ],
+    },
 };
