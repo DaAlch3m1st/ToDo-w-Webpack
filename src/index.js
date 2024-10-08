@@ -1,13 +1,19 @@
 import _ from 'lodash';
 import "./assets/style.css";
 
- function component() {
-   const element = document.createElement('div');
 
-  // Lodash, now imported by this script
-   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+// side menu
+// import { taskSection } from './interface';
+// taskSection();
 
-   return element;
- }
+// modal
+import { appendElements } from './interface';
+import { closeModal } from './interface';
+import { openModal } from './interface';
 
- document.body.appendChild(component());
+
+appendElements();
+closeModal();
+openModal();
+
+//  document.body.appendChild(component());

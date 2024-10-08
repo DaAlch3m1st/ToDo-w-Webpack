@@ -8,7 +8,7 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        publicPath: '/Restaurant-Page-with-webpack/',
+        publicPath: '/',
     },
     plugins: [
         new HtmlWebpackPlugin({
