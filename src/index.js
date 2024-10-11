@@ -8,12 +8,24 @@ import "./assets/style.css";
 
 // modal
 import { appendElements } from './interface';
-import { closeModal } from './interface';
-import { openModal } from './interface';
+import { closeModal } from './dom';
+import { openModal } from './dom';
 
+import { test } from './dom';
+
+// test();
 
 appendElements();
 closeModal();
 openModal();
 
-//  document.body.appendChild(component());
+// DOM LOGIC
+
+import { appendTask } from './dom';
+appendTask();
+
+import { dateTask } from './dom';
+dateTask();
+
+import { priorityTask } from './dom';
+priorityTask();

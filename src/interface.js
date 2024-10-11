@@ -28,7 +28,8 @@ export function sideMenu() {
 
 export function taskContainer() {
     let content = `
-    <div class="task-container"></div>
+    <div class="task-container">
+    </div>
     `;
     
     return content;
@@ -47,7 +48,7 @@ export function modalContainer() {
         <textarea id="description" rows="4" cols="50" placeholder="you're description">
         </textarea>
         <label for="start">Start date:</label>
-        <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+        <input type="date" id="date" name="trip-start" value="2018-07-22"  min="2000-01-01" max="2100-12-31"/>
 
         <fieldset>
             <legend>Select the priority of the task:</legend>
@@ -87,20 +88,6 @@ export function appendElements() {
 
     const taskContainerContent = taskContainer();
     page.innerHTML += taskContainerContent;
-}
-
-export function openModal() {
-    openModalBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        modal.classList.add('modal--show');
-    })
-} 
-
-export function closeModal() {
-    closeModalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.remove('modal--show');
-    })
 }
 
 

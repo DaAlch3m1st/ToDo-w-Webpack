@@ -30,6 +30,10 @@
     height: 100vh;
 }
 
+.task-item {
+    font-size: 3em;
+}
+
 li {
     cursor: pointer;
     display: flex;
@@ -79,6 +83,18 @@ li {
     text-decoration: none;
     color: #fff;
     background-color: #f25250;
+    padding: 1em 3em;
+    border: 1px solid;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.add-task-btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #00b000;
     padding: 1em 3em;
     border: 1px solid;
     border-radius: 6px;
