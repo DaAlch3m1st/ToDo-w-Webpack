@@ -20,18 +20,18 @@ openModal();
 import { appendTask } from './dom';
 appendTask();
 
-// import { dateTask } from './dom';
-// dateTask();
+import { dateTask } from './dom';
+dateTask();
 
-// import { priorityTask } from './dom';
-// priorityTask();
+import { priorityTask } from './dom';
+priorityTask();
 
 // test();
 import { testing } from './dom';
 testing();
 
-// import { idSum } from './dom';
-// idSum();
+import { idSum } from './dom';
+idSum();
 
 // local
 // import { local } from './localstorage';
