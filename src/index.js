@@ -13,5 +13,4 @@ dateTask();
 priorityTask();
 
 import { loadLocalStorage, loadTask } from './localstorage';
-loadTask()
 loadLocalStorage();
