@@ -1,5 +1,3 @@
-import { nameTask } from "./events";
-
 let taskItems;
 let container;
 
@@ -9,7 +7,6 @@ export function containerTasks() {
 }
 
 export function NameTaskDom(val) {
-    // createTaskItems();
     containerTasks();
 
     container.append(taskItems);
@@ -17,7 +14,6 @@ export function NameTaskDom(val) {
     const h3 = document.createElement('h3');
     h3.textContent = val;
     h3.classList.add('name-task');
-    // taskItems.appendChild(h3);
 
     return h3;
 }
@@ -31,7 +27,6 @@ export function dueDateDom(val) {
     const para = document.createElement('p');
     para.textContent = val;
     para.classList.add('due-date');
-    // taskItems.appendChild(para);
 
     return taskItems;
 }
@@ -45,7 +40,6 @@ export function priorityDom(val) {
     const para = document.createElement('p');
     para.textContent = val;
     para.classList.add('priority-lv');
-    // taskItems.appendChild(para);
 
     return taskItems;
 }

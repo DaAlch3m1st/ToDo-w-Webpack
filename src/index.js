@@ -1,10 +1,6 @@
 import _ from 'lodash';
 import "./assets/style.css";
 
-// side menu
-// import { taskSection } from './interface';
-// taskSection();
-
 import { appendTask, dateTask, priorityTask, closeModal, openModal } from './events';
 import { appendElements } from './interface';
 

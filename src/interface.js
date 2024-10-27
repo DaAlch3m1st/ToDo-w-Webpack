@@ -1,5 +1,3 @@
-// side menu section
-
 import { loadTask } from "./localstorage";
 
 export function sideMenu() {
@@ -35,8 +33,6 @@ export function taskContainer() {
     
     return content;
 }
-
-// Modal section 
 
 export function modalContainer() {
     let content = `
