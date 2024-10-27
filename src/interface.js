@@ -1,7 +1,8 @@
 // side menu section
 
+import { loadTask } from "./localstorage";
+
 export function sideMenu() {
-    // const category = document.querySelector('.category');
     let content = `
     <div class="side-menu">
         <ul class="date">
@@ -48,7 +49,7 @@ export function modalContainer() {
         <textarea id="description" rows="4" cols="50" placeholder="you're description">
         </textarea>
         <label for="start">Start date:</label>
-        <input type="date" id="date" name="trip-start" value="2018-07-22"  min="2000-01-01" max="2100-12-31"/>
+        <input type="date" id="date" name="trip-start" value="2024-10-30"  min="2024-01-01" max="2100-12-31"/>
 
         <fieldset>
             <legend>Select the priority of the task:</legend>
@@ -88,7 +89,5 @@ export function appendElements() {
 
     const taskContainerContent = taskContainer();
     page.innerHTML += taskContainerContent;
+    loadTask();
 }
-
-
-// Append the elements

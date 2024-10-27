@@ -1,5 +1,3 @@
-import { local } from "./localstorage";
-
 export let bookmarks = [];
 
 let id_counter = 1;
@@ -11,7 +9,6 @@ function generateUniqueId() {
 export function curry(val1) {
     return (val2) => {
         return (val3) => {
-            console.log(`Arg1: ${val1}, Arg2: ${val2}, Arg3: ${val3}`);
             const x = {
                 id: generateUniqueId(),
                 name: val1,
@@ -19,8 +16,8 @@ export function curry(val1) {
                 prior: val3
             }
             bookmarks.push(x);
+    
             console.log(bookmarks);
-            local(bookmarks);
         }
     }
 }
