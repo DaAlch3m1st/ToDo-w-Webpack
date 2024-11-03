@@ -47,21 +47,21 @@ export function priorityDom(val) {
 export function createTaskItems(val1, val2, val3) {
     containerTasks();
 
-    const h3 = document.createElement('h3');
-    h3.textContent = val1;
-    h3.classList.add('name-task');
-
     const para1 = document.createElement('p');
-    para1.textContent = val2;
-    para1.classList.add('due-date');
+    para1.textContent = val1;
+    para1.classList.add('name-task');
 
     const para2 = document.createElement('p');
-    para2.textContent = val3;
+    para2.textContent = val2;
     para2.classList.add('due-date');
+
+    const para3 = document.createElement('p');
+    para3.textContent = val3;
+    para3.classList.add('due-date');
 
     taskItems = document.createElement('div');
     taskItems.classList.add('task-item');
-    taskItems.append(h3, para1, para2);
+    taskItems.append(para1, para2, para3);
     container.append(taskItems);
     return taskItems;
 }

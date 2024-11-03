@@ -1,7 +1,5 @@
 import { format, compareAsc } from "date-fns";
-import { curry, saveDomElements } from "./logic";
-import { loadTask } from "./localstorage";
-import { NameTaskDom } from "./tasksDom";
+import { saveTask, curry } from "./localstorage";
 
 export let nameTask;
 export let date;

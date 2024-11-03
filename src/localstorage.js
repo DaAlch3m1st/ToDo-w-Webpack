@@ -1,21 +1,34 @@
-import { processTask, updates } from "./events";
-import { createTaskItems, dueDateDom, NameTaskDom, priorityDom } from "./tasksDom";
-import { bookmarks } from "./logic";
+export let bookmarks = [];
 
+let id_counter = 1;
+
+function generateUniqueId() {
+    return id_counter++;
+}
+
+export function curry(val1) {
+    return (val2) => {
+        return (val3) => {
+            const x = {
+                id: generateUniqueId(),
+                name: val1,
+                date: val2,
+                prior: val3
+            }
+            bookmarks.push(x);
+            return bookmarks;    
+        }
+    }
+}
 
 export function loadTask() {
-        const taskCont = JSON.stringify(bookmarks);
-        localStorage.setItem('task', taskCont);
-            
-        const tasks = JSON.parse(localStorage.getItem('task')) || [];
-        tasks.forEach(element => {
-            createTaskItems(element.name, element.date, element.prior);
-        });
+    if (bookmarks.length > 0) {
+        localStorage.setItem('task', JSON.stringify(bookmarks));
+    }
 }
 
 export function loadLocalStorage() {
     const addTaskBtn = document.getElementById('addTaskBtn');
-
     addTaskBtn.addEventListener('click', () => {
         loadTask();
     })
