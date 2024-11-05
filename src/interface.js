@@ -1,13 +1,11 @@
-import { loadTask } from "./localstorage";
-
 export function sideMenu() {
     let content = `
     <div class="side-menu">
         <ul class="date">
         <h1>Tasks!</h1>
-        <li>Today</li>
-        <li>Upcoming</li>
-        <li>Expire tasks</li>
+        <a href="/today">Today</a>
+        <a href="/about">Upcoming</a>
+        <a href="/expire">Expire tasks</a>
         </ul>
 
         <ul class="category">
@@ -85,5 +83,4 @@ export function appendElements() {
 
     const taskContainerContent = taskContainer();
     page.innerHTML += taskContainerContent;
-    loadTask();
 }

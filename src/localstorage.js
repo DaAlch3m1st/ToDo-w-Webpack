@@ -1,9 +1,23 @@
+import { createTaskItems } from "./tasksDom";
+
 export let bookmarks = [];
 
-let id_counter = 1;
-
 function generateUniqueId() {
-    return id_counter++;
+    let id_counter = Date.now();
+    return id_counter;
+}
+
+export function loadTask(key, item) {
+    bookmarks = JSON.parse(localStorage.getItem(key)) || [];
+    bookmarks.push(item);
+    localStorage.setItem(key, JSON.stringify(bookmarks));
+}
+
+export function loadTaskToDom() {
+    const bm = JSON.parse(localStorage.getItem('task')) || [];
+    bm.forEach(element => {
+        createTaskItems(element.name, element.date, element.prior);
+    });
 }
 
 export function curry(val1) {
@@ -15,21 +29,8 @@ export function curry(val1) {
                 date: val2,
                 prior: val3
             }
-            bookmarks.push(x);
-            return bookmarks;    
+            loadTask('task', x);
+            console.log(bookmarks);
         }
     }
-}
-
-export function loadTask() {
-    if (bookmarks.length > 0) {
-        localStorage.setItem('task', JSON.stringify(bookmarks));
-    }
-}
-
-export function loadLocalStorage() {
-    const addTaskBtn = document.getElementById('addTaskBtn');
-    addTaskBtn.addEventListener('click', () => {
-        loadTask();
-    })
 }

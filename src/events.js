@@ -1,5 +1,5 @@
 import { format, compareAsc } from "date-fns";
-import { saveTask, curry } from "./localstorage";
+import { saveTask, curry, loadTaskToDom } from "./localstorage";
 
 export let nameTask;
 export let date;
@@ -31,6 +31,9 @@ export function appendTask() {
                 console.log("no input field on task name");
             } else {
                 nameTask = curry(taskNameInput);
+                modal.classList.remove('modal--show');
+                window.location.reload();
+                // document.getElementById('taskName').value = '';
             }
         })
 }

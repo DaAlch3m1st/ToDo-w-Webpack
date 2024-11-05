@@ -11,7 +11,7 @@
 
 .side-menu {
     /* background-color: #f4f5f7; */
-    background-color: aquamarine;
+    background-color: #fad6a5c4;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
 
 .task-container {
     /* background-color: #ffffff; */
-    background-color: tomato;
+    background-color: #ffffff;
     height: 100vh;
 }
 
@@ -37,6 +37,10 @@
 li {
     cursor: pointer;
     display: flex;
+}
+
+a {
+    text-decoration: none;
 }
 
 .modal {
