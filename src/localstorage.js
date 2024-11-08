@@ -1,7 +1,16 @@
+import { home } from './tasksDom'
+
 export function loadTask(key, item) {
     let bookmarks = JSON.parse(localStorage.getItem(key)) || [];
     bookmarks.push(item);
     localStorage.setItem(key, JSON.stringify(bookmarks));
+}
+
+export function loadDefaultTask() {
+    let bm = JSON.parse(localStorage.getItem('task')) || [];
+    bm.forEach(elements => {
+        return home(elements.name, elements.date, elements.prior);
+    });
 }
 
 export function curry(val1) {
