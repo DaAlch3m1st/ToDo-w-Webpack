@@ -28,10 +28,23 @@
     /* background-color: #ffffff; */
     background-color: #ffffff;
     height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-height: 150px;
+}
+
+.hide-task {
+    visibility: hidden;
+}
+
+.show-task {
+    visibility: visible;
 }
 
 .task-item {
-    font-size: 3em;
+    font-size: 2em;
+    line-height: 2em;
+    border: 0.3em solid black;
 }
 
 li {
@@ -41,7 +54,11 @@ li {
 
 a {
     text-decoration: none;
+    color: #0da1179e;
+    font-size: 1.5em;
 }
+
+
 
 .modal {
     position: fixed;
@@ -66,7 +83,6 @@ a {
     max-width: 600px;
     max-height: 90%;
     background-color: #ffffff; 
-    /* PORQUE MIERDA EL FONDO NO ES BLANCO AAAAA */
     border-radius: 6px;
     padding: 3em 2.5em;
     display: grid;
@@ -98,7 +114,7 @@ a {
 .add-task-btn {
     text-decoration: none;
     color: #fff;
-    background-color: #00b000;
+    background-color: #00b0003a;
     padding: 1em 3em;
     border: 1px solid;
     border-radius: 6px;

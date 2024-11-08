@@ -44,7 +44,8 @@ export function priorityDom(val) {
     return taskItems;
 }
 
-export function createTaskItems(val1, val2, val3) {
+// soon this function name will be 'home'
+export function home(val1, val2, val3) { 
     containerTasks();
 
     const para1 = document.createElement('p');
@@ -57,11 +58,91 @@ export function createTaskItems(val1, val2, val3) {
 
     const para3 = document.createElement('p');
     para3.textContent = val3;
-    para3.classList.add('due-date');
+    para3.classList.add('priority');
 
     taskItems = document.createElement('div');
     taskItems.classList.add('task-item');
     taskItems.append(para1, para2, para3);
     container.append(taskItems);
+    
+    if (para3.textContent === 'high') {
+        taskItems.classList.add('prior-high');
+    } else if (para3.textContent === 'medium') {
+        taskItems.classList.add('prior-medium');
+    } else if (para3.textContent === 'low') {
+        taskItems.classList.add('prior-low');
+    }
+    return taskItems;
+}
+
+export function lowPrior(val1, val2, val3) {
+    containerTasks();
+
+    const para1 = document.createElement('p');
+    para1.textContent = val1;
+    para1.classList.add('name-task');
+
+    const para2 = document.createElement('p');
+    para2.textContent = val2;
+    para2.classList.add('due-date');
+
+    const para3 = document.createElement('p');
+    para3.textContent = val3;
+    para3.classList.add('priority');
+
+    taskItems = document.createElement('div');
+    taskItems.classList.add('task-item');
+    taskItems.append(para1, para2, para3);
+    container.append(taskItems);
+    
+    para3.classList.add('prior-low');
+    return taskItems;
+}
+
+export function mediumPrior(val1, val2, val3) {
+    containerTasks();
+
+    const para1 = document.createElement('p');
+    para1.textContent = val1;
+    para1.classList.add('name-task');
+
+    const para2 = document.createElement('p');
+    para2.textContent = val2;
+    para2.classList.add('due-date');
+
+    const para3 = document.createElement('p');
+    para3.textContent = val3;
+    para3.classList.add('priority');
+
+    taskItems = document.createElement('div');
+    taskItems.classList.add('task-item');
+    taskItems.append(para1, para2, para3);
+    container.append(taskItems);
+
+    para3.classList.add('prior-medium');
+    return taskItems;
+}
+
+export function highPrior(val1, val2, val3) {
+    containerTasks();
+
+    const para1 = document.createElement('p');
+    para1.textContent = val1;
+    para1.classList.add('name-task');
+
+    const para2 = document.createElement('p');
+    para2.textContent = val2;
+    para2.classList.add('due-date');
+
+    const para3 = document.createElement('p');
+    para3.textContent = val3;
+    para3.classList.add('priority');
+
+    taskItems = document.createElement('div');
+    taskItems.classList.add('task-item');
+    taskItems.append(para1, para2, para3);
+    container.append(taskItems);
+
+    para3.classList.add('prior-high');
     return taskItems;
 }

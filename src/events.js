@@ -32,7 +32,7 @@ export function appendTask() {
             } else {
                 nameTask = curry(taskNameInput);
                 modal.classList.remove('modal--show');
-                window.location.reload();
+                // window.location.reload();
                 // document.getElementById('taskName').value = '';
             }
         })

@@ -1,9 +1,10 @@
 import _ from 'lodash';
 import "./assets/style.css";
 
-import { appendTask, dateTask, priorityTask, closeModal, openModal } from './events';
+import { appendTask, dateTask, priorityTask, closeModal, openModal, spa } from './events';
 import { loadLocalStorage, loadTask, loadTaskToDom } from './localstorage';
 import { appendElements } from './interface';
+import { pathHash } from './spa';
 
 appendElements();
 
@@ -16,4 +17,6 @@ priorityTask();
 
 // loadTask();
 // loadLocalStorage();
-loadTaskToDom();
+// loadTaskToDom();
+
+pathHash();
