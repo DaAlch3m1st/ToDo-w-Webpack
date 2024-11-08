@@ -1,5 +1,5 @@
-import { format, compareAsc } from "date-fns";
-import { saveTask, curry, loadTaskToDom } from "./localstorage";
+import { format, isFuture, isPast, isToday } from "date-fns";
+import { curry } from "./localstorage";
 
 export let nameTask;
 export let date;
@@ -32,8 +32,7 @@ export function appendTask() {
             } else {
                 nameTask = curry(taskNameInput);
                 modal.classList.remove('modal--show');
-                // window.location.reload();
-                // document.getElementById('taskName').value = '';
+                window.location.reload();
             }
         })
 }
@@ -71,4 +70,10 @@ export function priorityTask() {
             }
          }
     })
+}
+
+// open & close dialog/modal side
+
+export function dialog() {
+    
 }

@@ -4,9 +4,9 @@ export function sideMenu() {
     <a href="#home">Homepage</a>
         <ul class="date">
         <h1>Tasks!</h1>
-        <a href="/today" class="prior">Today</a>
-        <a href="/upcoming" class="prior">Upcoming</a>
-        <a href="/expire" class="prior">Expire tasks</a>
+        <a href="#today" class="prior">Today</a>
+        <a href="#upcoming" class="prior">Upcoming</a>
+        <a href="#expire" class="prior">Expire tasks</a>
         </ul>
 
         <ul class="category">
@@ -70,6 +70,10 @@ export function modalContainer() {
     </div>
     `;
     return content;
+}
+
+export function modalTaskDetails() {
+    // TODO - when the user wants more details of his task this will work as a modal
 }
 
 export function sectionContainer(items) {

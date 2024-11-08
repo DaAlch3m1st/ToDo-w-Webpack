@@ -1,4 +1,5 @@
 import { home } from './tasksDom'
+import { format } from 'date-fns';
 
 export function loadTask(key, item) {
     let bookmarks = JSON.parse(localStorage.getItem(key)) || [];
@@ -9,7 +10,10 @@ export function loadTask(key, item) {
 export function loadDefaultTask() {
     let bm = JSON.parse(localStorage.getItem('task')) || [];
     bm.forEach(elements => {
-        return home(elements.name, elements.date, elements.prior);
+        const dateString = elements.date;
+        const date = new Date(dateString.replace(/-/g, '/'));
+        const dateFormated = format(date, 'MMM MM/dd');
+        return home(elements.name, dateFormated, elements.prior);
     });
 }
 
