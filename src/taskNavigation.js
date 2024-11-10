@@ -1,5 +1,5 @@
 import { isToday, isPast, isFuture, format } from "date-fns";
-import { home } from "./tasksDom";
+import { appendItems } from "./tasksDom";
 
 export function removeHash () { 
 // Step 1: Access the current URL
@@ -30,7 +30,7 @@ export function navigateDueDate() {
                         const dateFormated = format(date, 'MMM MM/dd');
 
                         if (isToday(date)) {
-                            return home(elements.name, dateFormated, elements.prior);
+                            return appendItems(elements.name, dateFormated, elements.prior);
                         }
                     })
                     break;
@@ -44,7 +44,7 @@ export function navigateDueDate() {
                         const dateFormated = format(date, 'MMM MM/dd');
 
                         if (isFuture(date)) {
-                            return home(elements.name, dateFormated, elements.prior);
+                            return appendItems(elements.name, dateFormated, elements.prior);
                         }
                     })
                     break;
@@ -59,7 +59,7 @@ export function navigateDueDate() {
 
                         if (isPast(date) && !isToday(date)) {
                             console.log(date);
-                            return home(elements.name, dateFormated, elements.prior);
+                            return appendItems(elements.name, dateFormated, elements.prior);
                         }
                     })
                     break;
@@ -83,7 +83,7 @@ export function navigatePriority() {
                     console.log("You are in the homepage")
                     taskContainer.innerHTML = '';
                     bm.forEach(elements => {
-                        return home(elements.name, elements.date, elements.prior);
+                        return appendItems(elements.name, elements.date, elements.prior);
                     });
                     break;
                     
@@ -93,7 +93,7 @@ export function navigatePriority() {
                     taskContainer.innerHTML = '';
                     bm.forEach(elements => {
                         if (elements.prior === 'high') {
-                            return home(elements.name, elements.date, elements.prior);
+                            return appendItems(elements.name, elements.date, elements.prior);
                         }
                     });
                     break;
@@ -104,7 +104,7 @@ export function navigatePriority() {
                     taskContainer.innerHTML = '';
                     bm.forEach(elements => {
                         if (elements.prior === 'medium') {
-                            return home(elements.name, elements.date, elements.prior);
+                            return appendItems(elements.name, elements.date, elements.prior);
                         }
                     });                 
                     break;
@@ -115,7 +115,7 @@ export function navigatePriority() {
                     taskContainer.innerHTML = '';
                     bm.forEach(elements => {
                         if (elements.prior === 'low') {
-                            return home(elements.name, elements.date, elements.prior);
+                            return appendItems(elements.name, elements.date, elements.prior);
                         }
                     });  
                     break;

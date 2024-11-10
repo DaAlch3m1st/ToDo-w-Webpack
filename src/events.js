@@ -1,4 +1,3 @@
-import { format, isFuture, isPast, isToday } from "date-fns";
 import { curry } from "./localstorage";
 
 export let nameTask;
@@ -72,8 +71,29 @@ export function priorityTask() {
     })
 }
 
-// open & close dialog/modal side
+export function checkMark() {
+    const checkBoxes = document.querySelectorAll('.checkmark');
+    checkBoxes.forEach(elements => {
+        elements.addEventListener('change', () => {
+            if (elements.checked) {
+                elements.parentElement.parentElement.classList.add('task-marked');
+            } else if (!elements.checked) {
+                elements.parentElement.parentElement.classList.remove('task-marked');
+            }
+        })
+    });
+}
 
-export function dialog() {
-    
+export function deleteTask() {
+    const deleteIcon = document.querySelectorAll('.delete-task');
+    deleteIcon.forEach(elements => {
+        elements.addEventListener('click', () => {
+            const x = elements.parentElement;
+            console.log(x);
+            let bm = JSON.parse(localStorage.getItem('task')) || [];
+            x.remove();
+            bm.forEach(element => {
+            })
+        })
+    })
 }

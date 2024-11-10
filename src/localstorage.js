@@ -1,5 +1,9 @@
-import { home } from './tasksDom'
+import { appendItems } from './tasksDom'
 import { format } from 'date-fns';
+
+export function generateId() {
+    return Date.now();
+}
 
 export function loadTask(key, item) {
     let bookmarks = JSON.parse(localStorage.getItem(key)) || [];
@@ -13,7 +17,7 @@ export function loadDefaultTask() {
         const dateString = elements.date;
         const date = new Date(dateString.replace(/-/g, '/'));
         const dateFormated = format(date, 'MMM MM/dd');
-        return home(elements.name, dateFormated, elements.prior);
+        return appendItems(elements.name, dateFormated, elements.prior);    
     });
 }
 
@@ -21,6 +25,7 @@ export function curry(val1) {
     return (val2) => {
         return (val3) => {
             const x = {
+                id: generateId(),
                 name: val1,
                 date: val2,
                 prior: val3

@@ -37,16 +37,14 @@
 }
 
 .task-container {
-    /* background-color: #ffffff; */
     background-color: green;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* max-height: 150px; */
+    grid-template-rows: repeat(1fr);
 }
 
 .task-container > .task-item {
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .hide-task {
@@ -59,8 +57,60 @@
 
 .task-item {
     font-size: 2em;
-    line-height: 2em;
     border: 0.3em solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-item > .delete-task {
+    opacity: 0;
+}
+
+.task-item:hover > .delete-task {
+    opacity: 1;
+}   
+
+.task-marked {
+    opacity: 0.5;
+}
+
+.task-item > .due-date {
+    font-size: 0.5em;
+}
+
+.name-task > strong {
+    color: #EC8305;
+}
+
+.checkmark{
+    width: 3.5em;
+    height: 3.5em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkmark:checked {
+    background-color: gray;
+}
+
+.delete-task {
+    cursor: pointer;
+}
+
+.delete-task:hover {
+    opacity: 1;
+}
+
+.delete-task::unhover {
+    opacity: 0;
 }
 
 li {

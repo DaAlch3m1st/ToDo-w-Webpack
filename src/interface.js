@@ -72,8 +72,14 @@ export function modalContainer() {
     return content;
 }
 
-export function modalTaskDetails() {
-    // TODO - when the user wants more details of his task this will work as a modal
+export function dialogDetails() {
+    let content = `
+    <dialog class="dialog-modal">
+        <div>this is a test of how your tasks will look like when you open the modal to see more detials</div>
+        <button class="close-modal">close</button>
+    </dialog>
+    `;
+    return content
 }
 
 export function sectionContainer(items) {
@@ -96,4 +102,7 @@ export function appendElements() {
 
     const taskContainerContent = taskContainer();
     page.innerHTML += taskContainerContent;
+
+    const dialogDetailsContainer = dialogDetails();
+    page.innerHTML += dialogDetailsContainer;
 }
