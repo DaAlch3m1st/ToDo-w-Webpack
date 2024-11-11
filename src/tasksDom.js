@@ -42,28 +42,29 @@ function deleteButton() {
 }
 
 function doneCheckMark() {
-    const label = document.createElement('label');
+    // const label = document.createElement('label');
     const input = document.createElement('input');
     input.type = "checkbox";
-    label.appendChild(input);
+    // label.appendChild(input);
 
-    label.classList.add('checkMarkCont');
+    // label.classList.add('checkMarkCont');
     input.classList.add('checkmark');
-    return label
+    return input;
 }
 
 export function appendItems(val1, val2, val3) {
     containerTasks();
+    const checkMark = doneCheckMark();
     const nameDateContainer = document.createElement('div');
     const name = NameTask(val1, val3);
     const date = dueDate(val2);
-    nameDateContainer.append(name, date);
+    nameDateContainer.append(checkMark, name, date);
     const deleteBtn = deleteButton();
-    const checkMark = doneCheckMark();
 
     taskItems = document.createElement('div');
     taskItems.classList.add('task-item', `prior-${val3}`);
-    taskItems.append(checkMark, nameDateContainer, deleteBtn);
+    nameDateContainer.classList.add('task-check-name-date');
+    taskItems.append(nameDateContainer, deleteBtn);
     container.append(taskItems);
 
     return taskItems;

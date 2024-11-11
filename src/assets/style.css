@@ -37,7 +37,7 @@
 }
 
 .task-container {
-    background-color: green;
+    background-color: gray;
     height: 100vh;
     display: grid;
     grid-template-rows: repeat(1fr);
@@ -63,6 +63,10 @@
     justify-content: space-between;
     align-items: center;
 }
+
+/* .task-check-name-date {
+    width: 200px;    
+} */
 
 .task-item > .delete-task {
     opacity: 0;
@@ -176,7 +180,7 @@ li {
 .add-task-btn {
     text-decoration: none;
     color: #fff;
-    background-color: #00b0003a;
+    background-color: #04e70498;
     padding: 1em 3em;
     border: 1px solid;
     border-radius: 6px;
