@@ -1,4 +1,4 @@
-import { curry } from "./localstorage";
+import { curry, loadTask, deleteTasks } from "./localstorage";
 
 export let nameTask;
 export let date;
@@ -27,6 +27,7 @@ export function appendTask() {
             const taskNameInput = document.getElementById('taskName').value.trim();
 
             if (taskNameInput === '') {
+                alert("Empty value");
                 console.log("no input field on task name");
             } else {
                 nameTask = curry(taskNameInput);
@@ -37,11 +38,10 @@ export function appendTask() {
 }
 
 export function dateTask() {
-
     addTaskBtn.addEventListener('click', () => {
         const dateInput = document.getElementById('date').value;
-
         if (dateInput === '') {
+            alert("Empty value");
            console.log('no input field on date');
         } else {
             if (nameTask) {
@@ -60,6 +60,7 @@ export function priorityTask() {
         const radioCheck = document.querySelector('input[name="priority"]:checked').value;
 
         if (radioCheck === '') {
+            alert("Empty value");
             console.log('no input field on priority'); 
          } else {
             if (date) {
@@ -87,13 +88,11 @@ export function checkMark() {
 export function deleteTask() {
     const deleteIcon = document.querySelectorAll('.delete-task');
     deleteIcon.forEach(elements => {
-        elements.addEventListener('click', () => {
-            const x = elements.parentElement;
-            console.log(x);
-            let bm = JSON.parse(localStorage.getItem('task')) || [];
-            x.remove();
-            bm.forEach(element => {
-            })
+        elements.addEventListener('click', (event) => {
+            const parentOfIcon = elements.parentElement;     
+            const parentId = parseInt(parentOfIcon.dataset.id);  
+            parentOfIcon.remove();
+            deleteTasks(parentId);
         })
     })
 }

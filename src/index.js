@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import "./assets/style.css";
-
+import { isToday, isPast, isFuture, format } from "date-fns";
 import { appendTask, dateTask, priorityTask, closeModal, openModal, dialog, checkMark, deleteTask } from './events';
-import { loadDefaultTask, loadLocalStorage, loadTask } from './localstorage';
+import { deleteTasks, loadDefaultTask, storedTasks } from './localstorage';
 import { appendElements } from './interface';
 import { navigateDueDate, navigatePriority } from './taskNavigation';
 
@@ -22,4 +22,5 @@ navigatePriority();
 navigateDueDate();
 // dialog()
 checkMark();
-deleteTask();
+deleteTask();   
+// deleteTasks();

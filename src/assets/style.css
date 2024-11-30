@@ -64,9 +64,10 @@
     align-items: center;
 }
 
-/* .task-check-name-date {
-    width: 200px;    
-} */
+.task-check-name-date {
+    width: 500px;    
+    display: flex;
+}
 
 .task-item > .delete-task {
     opacity: 0;

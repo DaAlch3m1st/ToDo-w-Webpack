@@ -1,3 +1,5 @@
+import { deleteTask } from './events'
+
 let taskItems;
 let container;
 
@@ -52,7 +54,7 @@ function doneCheckMark() {
     return input;
 }
 
-export function appendItems(val1, val2, val3) {
+export function appendItems(val1, val2, val3, id) {
     containerTasks();
     const checkMark = doneCheckMark();
     const nameDateContainer = document.createElement('div');
@@ -62,6 +64,7 @@ export function appendItems(val1, val2, val3) {
     const deleteBtn = deleteButton();
 
     taskItems = document.createElement('div');
+    taskItems.dataset.id = id;
     taskItems.classList.add('task-item', `prior-${val3}`);
     nameDateContainer.classList.add('task-check-name-date');
     taskItems.append(nameDateContainer, deleteBtn);
