@@ -123,6 +123,13 @@ li {
     display: flex;
 }
 
+#emptyPage {
+    font-size: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #openModalBtn {
     background-color: #fff;
 }

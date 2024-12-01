@@ -4,7 +4,7 @@ import { isToday, isPast, isFuture, format } from "date-fns";
 import { appendTask, dateTask, priorityTask, closeModal, openModal, dialog, checkMark, deleteTask } from './events';
 import { deleteTasks, loadDefaultTask, storedTasks } from './localstorage';
 import { appendElements } from './interface';
-import { navigateDueDate, navigatePriority } from './taskNavigation';
+import { navigateDueDate, navigatePriority, emptyMessage } from './taskNavigation';
 
 appendElements();
 
@@ -22,5 +22,4 @@ navigatePriority();
 navigateDueDate();
 // dialog()
 checkMark();
-deleteTask();   
-// deleteTasks();
+deleteTask();  

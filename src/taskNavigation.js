@@ -18,50 +18,63 @@ export function navigateDueDate() {
         const bm = JSON.parse(localStorage.getItem('task')) || [];
         const currentPath = window.location.hash;
 
-            bm.forEach(elements => {
                 switch(currentPath) {
                     case '#today':
                         removeHash();
                         taskContainer.innerHTML = '';
+                        if (emptyMessage) {
+                            emptyMessage();
+                        }
                         bm.forEach(elements => {
                             const dateString = elements.date;
                             const date = new Date(dateString.replace(/-/g, '/'));
                             var dateFormated = format(date, 'MMM MM/dd');
-
                             if (isToday(date)) {
-                                return appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                removeMessage();
                             }
+                            deleteTask();
                         });
                         break;
                     case '#upcoming':
                         removeHash();
                         taskContainer.innerHTML = '';
+                        if (emptyMessage) {
+                            emptyMessage();
+                        }
                         bm.forEach(elements => {
+                            deleteTask();
                             const dateString = elements.date;
                             const date = new Date(dateString.replace(/-/g, '/'));
                             const dateFormated = format(date, 'MMM MM/dd');
-
                             if (isFuture(date)) {
-                                return appendItems(elements.name, dateFormated, elements.prior, elements.id);
-                            }
+                                appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                removeMessage();
+                            } 
+                            deleteTask();
                         })
                         break;
                     case '#expire':
                         removeHash();
                         taskContainer.innerHTML = '';
+                        if (emptyMessage) {
+                            emptyMessage();
+                        }
                         bm.forEach(elements => {
+                            deleteTask();
                             const dateString = elements.date;
                             const date = new Date(dateString.replace(/-/g, '/'));
                             const dateFormated = format(date, 'MMM MM/dd');
                             if (isPast(date) && !isToday(date)) {
-                                return appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                removeMessage();
                             }
+                            deleteTask();
                         })
                         break;
                     default: 
                         console.log('page not found')
                 }
-            })
     })
 }
 
@@ -70,61 +83,81 @@ export function navigateDueDate() {
 export function navigatePriority() { 
     window.addEventListener('hashchange', () => {
         const taskContainer = document.querySelector('.task-container');
+        const h1 = document.getElementById('emptyPage')
         const currentPath = window.location.hash;
         const bm = JSON.parse(localStorage.getItem('task')) || [];
         
+        let checkEmpty = false;
             switch(currentPath) {
                 
                 case '#home':
                     removeHash();
                     taskContainer.innerHTML = '';
+                    if (!checkEmpty) {
+                        emptyMessage();
+                    }
                     bm.forEach(elements => {
-                        deleteTask();
                         const dateString = elements.date;
                         const date = new Date(dateString.replace(/-/g, '/'));
                         var dateFormated = format(date, 'MMM MM/dd');
-                        return appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                        appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                        removeMessage();
+                        deleteTask();
                     });
                     break;
-                    
                 case '#high':
                     removeHash();
                     console.log("You are in the 'High' side");
                     taskContainer.innerHTML = '';
+                    if (emptyMessage) {
+                        emptyMessage();
+                    }
                     bm.forEach(elements => {
                         const dateString = elements.date;
                         const date = new Date(dateString.replace(/-/g, '/'));
                         var dateFormated = format(date, 'MMM MM/dd');
                         if (elements.prior === 'high') {
-                            return appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            removeMessage();
                         }
+                        deleteTask();
                     });
                     break;
 
                 case '#medium':
+//NOTE - so when we delete the item the "messageEmpty" doesn't run automatically so I'm trying to figure out tmr I'mg going to sleep I got this
                     removeHash();
                     taskContainer.innerHTML = '';
+                    if (emptyMessage) {
+                        emptyMessage();
+                    }
                     bm.forEach(elements => {
                         const dateString = elements.date;
                         const date = new Date(dateString.replace(/-/g, '/'));
                         var dateFormated = format(date, 'MMM MM/dd');
                         if (elements.prior === 'medium') {
-                            return appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            removeMessage();
                         }
+                        deleteTask();
                     });                 
                     break;
                 
                 case '#low':
                     removeHash();
                     taskContainer.innerHTML = '';
+                    if (emptyMessage) {
+                        emptyMessage();
+                    }
                     bm.forEach(elements => {
-                        deleteTask();
                         const dateString = elements.date;
                         const date = new Date(dateString.replace(/-/g, '/'));
                         var dateFormated = format(date, 'MMM MM/dd');
                         if (elements.prior === 'low') {
-                            return appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            removeMessage();
                         }
+                        deleteTask();
                     });  
                     break;
 
@@ -132,4 +165,21 @@ export function navigatePriority() {
                     console.log("Page not found");
             }
     })
+}
+
+export function emptyMessage() {
+    const taskContainer = document.querySelector('.task-container');
+    if (taskContainer.innerHTML === '') {
+        const h1 = document.createElement('h1');
+        h1.id = 'emptyPage';
+        h1.textContent = 'EMPTY';
+        taskContainer.append(h1);
+    }
+}
+
+export function removeMessage() {
+    const element = document.getElementById('emptyPage');
+    if (element) {
+        element.remove();
+    }
 }
