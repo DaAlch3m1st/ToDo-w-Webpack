@@ -27,7 +27,6 @@ export function generateId() {
 }
 
 export function loadTask(item) {
-    let bm = [];
     let bookmarks = JSON.parse(localStorage.getItem('task')) || [];
     bookmarks.push(item);
     localStorage.setItem('task', JSON.stringify(bookmarks));
@@ -67,7 +66,6 @@ export function curry(val1) {
                 date: val2,
                 prior: val3
             }
-
             loadTask(x);
         }
     }
