@@ -81,100 +81,107 @@ export function navigateDueDate() {
 
 // priority side
 export function navigatePriority() { 
-    window.addEventListener('hashchange', () => {
         const taskContainer = document.querySelector('.task-container');
         const h1 = document.getElementById('emptyPage')
         const currentPath = window.location.hash;
         const bm = JSON.parse(localStorage.getItem('task')) || [];
-        
         let checkEmpty = false;
-            switch(currentPath) {
-                
-                case '#home':
-                    removeHash();
-                    taskContainer.innerHTML = '';
-                    if (!checkEmpty) {
-                        emptyMessage();
-                    }
-                    bm.forEach(elements => {
-                        const dateString = elements.date;
-                        const date = new Date(dateString.replace(/-/g, '/'));
-                        var dateFormated = format(date, 'MMM MM/dd');
-                        appendItems(elements.name, dateFormated, elements.prior, elements.id);
-                        removeMessage();
-                        deleteTask();
-                    });
-                    break;
-                case '#high':
-                    removeHash();
-                    console.log("You are in the 'High' side");
-                    taskContainer.innerHTML = '';
-                    if (emptyMessage) {
-                        emptyMessage();
-                    }
-                    bm.forEach(elements => {
-                        const dateString = elements.date;
-                        const date = new Date(dateString.replace(/-/g, '/'));
-                        var dateFormated = format(date, 'MMM MM/dd');
-                        if (elements.prior === 'high') {
-                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
-                            removeMessage();
-                        }
-                        deleteTask();
-                    });
-                    break;
 
-                case '#medium':
-//NOTE - so when we delete the item the "messageEmpty" doesn't run automatically so I'm trying to figure out tmr I'mg going to sleep I got this
-                    removeHash();
-                    taskContainer.innerHTML = '';
-                    if (emptyMessage) {
-                        emptyMessage();
-                    }
-                    bm.forEach(elements => {
-                        const dateString = elements.date;
-                        const date = new Date(dateString.replace(/-/g, '/'));
-                        var dateFormated = format(date, 'MMM MM/dd');
-                        if (elements.prior === 'medium') {
-                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
-                            removeMessage();
-                        }
-                        deleteTask();
-                    });                 
-                    break;
-                
-                case '#low':
-                    removeHash();
-                    taskContainer.innerHTML = '';
-                    if (emptyMessage) {
-                        emptyMessage();
-                    }
-                    bm.forEach(elements => {
-                        const dateString = elements.date;
-                        const date = new Date(dateString.replace(/-/g, '/'));
-                        var dateFormated = format(date, 'MMM MM/dd');
-                        if (elements.prior === 'low') {
-                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
-                            removeMessage();
-                        }
-                        deleteTask();
-                    });  
-                    break;
-
-                default:
-                    console.log("Page not found");
+        if (!currentPath) {
+            console.log(taskContainer.textContent.trim() ==='');
+            const checkEmptyInDefaultPath = taskContainer.textContent.trim() ==='';
+            if (checkEmptyInDefaultPath) {
+                console.log('es true');
+                emptyMessage();
+            } else {
+                removeMessage();
             }
-    })
+        }
+        window.addEventListener('hashchange', () => {
+            const currentPath = window.location.hash;
+                switch(currentPath) {
+                    case '#home':
+                        removeHash();
+                        taskContainer.innerHTML = '';
+                        // all of this statements that you see aren't necessary lol
+                        if (!checkEmpty) {
+                            emptyMessage();
+                        }
+                        bm.forEach(elements => {
+                            const dateString = elements.date;
+                            const date = new Date(dateString.replace(/-/g, '/'));
+                            var dateFormated = format(date, 'MMM MM/dd');
+                            appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                            removeMessage();
+                            deleteTask();
+                        });
+                        break;
+                    case '#high':
+                        removeHash();
+                        console.log("You are in the 'High' side");
+                        taskContainer.innerHTML = '';
+                        if (emptyMessage) {
+                            emptyMessage();
+                        }
+                        bm.forEach(elements => {
+                            const dateString = elements.date;
+                            const date = new Date(dateString.replace(/-/g, '/'));
+                            var dateFormated = format(date, 'MMM MM/dd');
+                            if (elements.prior === 'high') {
+                                appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                removeMessage();
+                            }
+                            deleteTask();
+                        });
+                        break;
+
+                    case '#medium':
+                        removeHash();
+                        taskContainer.innerHTML = '';
+                        if (emptyMessage) {
+                            emptyMessage();
+                        }
+                        bm.forEach(elements => {
+                            const dateString = elements.date;
+                            const date = new Date(dateString.replace(/-/g, '/'));
+                            var dateFormated = format(date, 'MMM MM/dd');
+                            if (elements.prior === 'medium') {
+                                appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                removeMessage();
+                            }
+                            deleteTask();
+                        });                 
+                        break;
+                    
+                    case '#low':
+                        removeHash();
+                        taskContainer.innerHTML = '';
+                        if (emptyMessage) {
+                            emptyMessage();
+                        }
+                        bm.forEach(elements => {
+                            const dateString = elements.date;
+                            const date = new Date(dateString.replace(/-/g, '/'));
+                            var dateFormated = format(date, 'MMM MM/dd');
+                            if (elements.prior === 'low') {
+                                appendItems(elements.name, dateFormated, elements.prior, elements.id);
+                                removeMessage();
+                            }
+                            deleteTask();
+                        });  
+                        break;
+                    default:
+                        console.log("Page not found");
+                }
+        })
 }
 
 export function emptyMessage() {
     const taskContainer = document.querySelector('.task-container');
-    if (taskContainer.innerHTML === '') {
         const h1 = document.createElement('h1');
         h1.id = 'emptyPage';
-        h1.textContent = 'EMPTY';
+        h1.textContent = 'No Tasks';
         taskContainer.append(h1);
-    }
 }
 
 export function removeMessage() {
