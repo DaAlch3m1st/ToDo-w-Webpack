@@ -1,4 +1,5 @@
 import { curry, loadTask, deleteTasks } from "./localstorage";
+import { isToday, isPast, isFuture, format } from "date-fns";
 
 export let nameTask;
 export let date;
@@ -95,4 +96,61 @@ export function deleteTask() {
             deleteTasks(parentId);
         })
     })
+}
+
+export function editTask() {
+    const editIcon = document.querySelectorAll('.edit-task');
+    const editTasksModal = document.getElementById('editModal');
+    editIcon.forEach(elements => {
+        elements.addEventListener('click', (event) => {
+            event.preventDefault();
+            // get the buttons to add or cancel edit
+            const editBtn = document.getElementById('addEditedTaskBtn');
+            const closeEditBtn = document.getElementById('closeEditedModalBtn');
+            // open a new personalize modal to edit the tasks
+            editTasksModal.classList.add('modal--show');
+            // get the parent of the edit button that was clicked
+            const todoChildrens = elements.parentElement.firstChild;
+            // get all the elements from the parent to change them in a moment
+            const todoNameParent =  todoChildrens.childNodes[1];
+            const todoPriorityChild = todoNameParent.childNodes[0];
+            const todoNameChild = todoNameParent.childNodes[1]
+            const todoDate = todoChildrens.childNodes[2];
+
+            // show the changes
+
+            editBtn.addEventListener('click', () => {
+                // get the new values from the inputs
+                const editedName = document.getElementById('editedName');
+                const editedDate = document.getElementById('editedDate');
+                const edPriority = document.querySelector("input[name='edPriority']:checked");
+
+                if (editedName.value !== '' && editedDate.value !== '' && edPriority.value !== '') {
+                    todoNameChild.textContent = editedName.value; 
+                    const dateValue = editedDate.value
+                    const date = new Date(dateValue.replace(/-/g, '/'));
+                    var dateFormated = format(date, 'MMM MM/dd');
+                    todoDate.textContent = dateFormated;
+                    todoPriorityChild.textContent = edPriority.value;
+                        if (todoPriorityChild.textContent === 'low') {
+                            todoPriorityChild.textContent = '! ';
+                        } else if (todoPriorityChild.textContent === 'medium') {
+                            todoPriorityChild.textContent = '!! ';
+                        } else if (todoPriorityChild.textContent === 'high') {
+                            todoPriorityChild.textContent = '!!! ';
+                        }
+                    editTasksModal.classList.remove('modal--show');
+                } else {
+                    alert('empty fields');
+                }
+            })
+            closeEditBtn.addEventListener('click', () => {
+                editTasksModal.classList.remove('modal--show');
+            })
+        })
+    })
+}
+
+export function openDetailModal() {
+
 }
