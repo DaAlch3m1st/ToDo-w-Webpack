@@ -10,6 +10,7 @@ export function containerTasks() {
 
 export function NameTask(val, prior) {
     // this function works to display the name and the level of priority in the page
+    // this function doesn't work with edited tasks
     const h3 = document.createElement('h3');
     const strong = document.createElement('strong');
     strong.textContent = prior;
@@ -44,14 +45,16 @@ function deleteButton() {
 }
 
 function doneCheckMark() {
-    // const label = document.createElement('label');
     const input = document.createElement('input');
     input.type = "checkbox";
-    // label.appendChild(input);
-
-    // label.classList.add('checkMarkCont');
     input.classList.add('checkmark');
     return input;
+}
+
+function editButton() {
+    const i = document.createElement('i');
+    i.classList.add('edit-task', 'fa-solid', 'fa-pen-to-square');
+    return i;
 }
 
 export function appendItems(val1, val2, val3, id) {
@@ -62,12 +65,13 @@ export function appendItems(val1, val2, val3, id) {
     const date = dueDate(val2);
     nameDateContainer.append(checkMark, name, date);
     const deleteBtn = deleteButton();
+    const editBtn = editButton();
 
     taskItems = document.createElement('div');
     taskItems.dataset.id = id;
     taskItems.classList.add('task-item', `prior-${val3}`);
     nameDateContainer.classList.add('task-check-name-date');
-    taskItems.append(nameDateContainer, deleteBtn);
+    taskItems.append(nameDateContainer, deleteBtn, editBtn);
     container.append(taskItems);
 
     return taskItems;
