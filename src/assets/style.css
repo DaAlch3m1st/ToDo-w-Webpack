@@ -69,13 +69,21 @@
     display: flex;
 }
 
-.task-item > .delete-task {
+.delete-task,
+.edit-task {
+    font-size: 36px;
+    width: 35%;
+    cursor: pointer;
     opacity: 0;
 }
 
 .task-item:hover > .delete-task {
     opacity: 1;
 }   
+
+.task-item:hover > .edit-task {
+    opacity: 1;
+}
 
 .task-marked {
     opacity: 0.5;
@@ -106,17 +114,15 @@
     background-color: gray;
 }
 
-.delete-task {
+.delete-task
+.edit-task {
     cursor: pointer;
 }
 
-.delete-task:hover {
+/* .delete-task:hover
+.edit-task:hover {
     opacity: 1;
-}
-
-.delete-task::unhover {
-    opacity: 0;
-}
+} */
 
 li {
     cursor: pointer;
@@ -124,7 +130,7 @@ li {
 }
 
 #emptyPage {
-    font-size: 96px;
+    font-size: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,7 +140,8 @@ li {
     background-color: #fff;
 }
 
-.modal {
+.modal,
+.modal-edit {
     position: fixed;
     top: 0;
     left: 0;
@@ -151,7 +158,8 @@ li {
     pointer-events: unset;
 }
 
-.modal-container {
+.modal-container,
+.edit-modal-container {
     margin: auto;
     width: 90%;
     max-width: 600px;
