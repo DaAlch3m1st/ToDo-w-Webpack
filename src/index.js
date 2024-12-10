@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import "./assets/style.css";
-import { appendTask, dateTask, priorityTask, closeModal, openModal, dialog, checkMark, deleteTask, editTask } from './events';
+import { appendTask, dateTask, priorityTask, closeModal, openModal, openDetailModal, checkMark, deleteTask, editTask } from './events';
 import { deleteTasks, loadDefaultTask, defaultTasks } from './localstorage';
 import { appendElements } from './interface';
 import { navigateDueDate, navigatePriority, emptyMessage } from './taskNavigation';
@@ -19,4 +19,5 @@ navigatePriority();
 navigateDueDate();
 checkMark();
 deleteTask();  
-editTask()
+editTask();
+openDetailModal();
