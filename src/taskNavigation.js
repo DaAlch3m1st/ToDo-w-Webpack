@@ -1,6 +1,6 @@
 import { isToday, isPast, isFuture, format } from "date-fns";
 import { appendItems } from "./tasksDom";
-import { deleteTask } from "./events";
+import { deleteTask, editTask, openDetailModal } from "./events";
 
 export function removeHash () { 
 // Step 1: Access the current URL
@@ -33,7 +33,9 @@ export function navigateDueDate() {
                                 appendItems(elements.name, dateFormated, elements.prior, elements.id);
                                 removeMessage();
                             }
+                            editTask();
                             deleteTask();
+                            openDetailModal();
                         });
                         break;
                     case '#upcoming':
@@ -51,7 +53,9 @@ export function navigateDueDate() {
                                 appendItems(elements.name, dateFormated, elements.prior, elements.id);
                                 removeMessage();
                             } 
+                            editTask();
                             deleteTask();
+                            openDetailModal();
                         })
                         break;
                     case '#expire':
@@ -69,7 +73,9 @@ export function navigateDueDate() {
                                 appendItems(elements.name, dateFormated, elements.prior, elements.id);
                                 removeMessage();
                             }
+                            editTask();
                             deleteTask();
+                            openDetailModal();
                         })
                         break;
                     default: 
@@ -114,6 +120,8 @@ export function navigatePriority() {
                             appendItems(elements.name, dateFormated, elements.prior, elements.id);
                             removeMessage();
                             deleteTask();
+                            editTask();
+                            openDetailModal();
                         });
                         break;
                     case '#high':
@@ -131,7 +139,9 @@ export function navigatePriority() {
                                 appendItems(elements.name, dateFormated, elements.prior, elements.id);
                                 removeMessage();
                             }
+                            editTask();
                             deleteTask();
+                            openDetailModal();
                         });
                         break;
 
@@ -149,7 +159,9 @@ export function navigatePriority() {
                                 appendItems(elements.name, dateFormated, elements.prior, elements.id);
                                 removeMessage();
                             }
+                            editTask();
                             deleteTask();
+                            openDetailModal();
                         });                 
                         break;
                     
@@ -167,7 +179,9 @@ export function navigatePriority() {
                                 appendItems(elements.name, dateFormated, elements.prior, elements.id);
                                 removeMessage();
                             }
+                            editTask();
                             deleteTask();
+                            openDetailModal();
                         });  
                         break;
                     default:
