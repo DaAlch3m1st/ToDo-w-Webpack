@@ -152,5 +152,35 @@ export function editTask() {
 }
 
 export function openDetailModal() {
+    const openModal = document.querySelectorAll('.detail-btn');
+    const closeModal = document.querySelectorAll('.close-dialog');
+    const dialog = document.querySelector('dialog');
 
+    openModal.forEach(element => {
+        element.addEventListener('click', (event) => {
+            event.preventDefault();
+            const parent = element.parentElement.firstChild;
+            
+            const nameParent = parent.childNodes[1]
+            dialog.children[1].textContent = `Name: ${nameParent.childNodes[1].textContent}`;
+            if (nameParent.childNodes[0].textContent === '! ') {
+                dialog.children[2].textContent = `Priority: low`;
+            } else if (nameParent.childNodes[0].textContent === '!! ') {
+                dialog.children[2].textContent = `Priority: medium`;
+            }  else if (nameParent.childNodes[0].textContent === '!!! ') {
+                dialog.children[2].textContent = `Priority: high`;
+            }
+            // dialog.children[3].textContent = desc;
+            dialog.children[4].textContent = `Date: ${parent.childNodes[2].textContent}`;
+
+            console.log(parent.childNodes[1].textContent)
+            dialog.showModal();
+        })
+    })
+    closeModal.forEach(element => {
+        element.addEventListener('click', (event) => {
+            event.preventDefault();
+            dialog.close();
+        })
+    })
 }
