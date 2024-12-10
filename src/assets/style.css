@@ -77,12 +77,27 @@
     opacity: 0;
 }
 
+.detail-btn {
+    width: 150px;
+    height: 24px;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+}
+
 .task-item:hover > .delete-task {
     opacity: 1;
+    transition: 0.3s ease;
 }   
 
 .task-item:hover > .edit-task {
     opacity: 1;
+    transition: 0.3s ease;
+}
+
+.task-item:hover > .detail-btn {
+    opacity: 1;
+    transition: 0.3s ease;
 }
 
 .task-marked {
