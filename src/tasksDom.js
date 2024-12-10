@@ -57,6 +57,13 @@ function editButton() {
     return i;
 }
 
+function detailBtn() {
+    const button = document.createElement('button');
+    button.textContent = 'More Details';
+    button.classList.add('detail-btn');
+    return button;
+}
+
 export function appendItems(val1, val2, val3, id) {
     containerTasks();
     const checkMark = doneCheckMark();
@@ -66,12 +73,13 @@ export function appendItems(val1, val2, val3, id) {
     nameDateContainer.append(checkMark, name, date);
     const deleteBtn = deleteButton();
     const editBtn = editButton();
+    const detailsBtn = detailBtn();
 
     taskItems = document.createElement('div');
     taskItems.dataset.id = id;
     taskItems.classList.add('task-item', `prior-${val3}`);
     nameDateContainer.classList.add('task-check-name-date');
-    taskItems.append(nameDateContainer, deleteBtn, editBtn);
+    taskItems.append(nameDateContainer, deleteBtn, editBtn, detailsBtn);
     container.append(taskItems);
 
     return taskItems;
