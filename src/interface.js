@@ -118,7 +118,11 @@ export function dialogDetails() {
     let content = `
     <dialog class="dialog-modal">
         <div>this is a test of how your tasks will look like when you open the modal to see more detials</div>
-        <button class="close-modal">close</button>
+        <h1 class="dialog-title"></h1>
+        <p class="dialog-priority"></p>
+        <p class="dialog-desc"></p>
+        <p class="dialog-date"></p>
+        <button class="close-dialog">close</button>
     </dialog>
     `;
     return content;
